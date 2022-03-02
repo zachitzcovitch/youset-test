@@ -1,32 +1,6 @@
 import * as React from "react";
 import { createTheme, Theme, ThemeProvider } from "@mui/material/styles";
-
-declare module "@mui/material/styles" {
-  interface TypographyVariants {
-    "colossus-140": React.CSSProperties;
-    "headline-1": React.CSSProperties;
-    "button-3": React.CSSProperties;
-    body: React.CSSProperties;
-  }
-
-  // allow configuration using `createTheme`
-  interface TypographyVariantsOptions {
-    "colossus-140"?: React.CSSProperties;
-    "headline-1"?: React.CSSProperties;
-    "button-3"?: React.CSSProperties;
-    body?: React.CSSProperties;
-  }
-}
-
-// Update the Typography's variant prop options
-declare module "@mui/material/Typography" {
-  interface TypographyPropsVariantOverrides {
-    "colossus-140": true;
-    "headline-1": true;
-    "button-3": true;
-    body: true;
-  }
-}
+import "./index.d";
 
 const mainTheme = createTheme({
   palette: {
@@ -60,6 +34,15 @@ const mainTheme = createTheme({
       letterSpacing: "0px",
       textAlign: "left",
     },
+    "headline-2": {
+      fontFamily: "Inter",
+      fontSize: "37px",
+      fontStyle: "normal",
+      fontWeight: "400",
+      lineHeight: "52px",
+      letterSpacing: "0px",
+      textAlign: "left",
+    },
     caption: {
       fontFamily: "Inter",
       fontSize: "14px",
@@ -83,6 +66,15 @@ const mainTheme = createTheme({
       fontSize: "14px",
       fontStyle: "normal",
       fontWeight: "700",
+      lineHeight: "20px",
+      letterSpacing: "0px",
+      textAlign: "left",
+    },
+    xsmall: {
+      fontFamily: "Inter",
+      fontSize: "12px",
+      fontStyle: "normal",
+      fontWeight: "400",
       lineHeight: "20px",
       letterSpacing: "0px",
       textAlign: "left",
