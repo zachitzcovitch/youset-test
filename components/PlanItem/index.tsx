@@ -22,9 +22,7 @@ function FeatureCheckbox() {
           fill="#5D5AFF"
         />
       </svg>
-      <Typography variant="caption">
-        I don’t know what you’re talking about
-      </Typography>
+      <Typography variant="caption">Feature....</Typography>
     </Box>
   );
 }
