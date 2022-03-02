@@ -48,7 +48,8 @@ export default function PlanItem({
     <Box
       sx={{
         p: "48px",
-        width: 380,
+        maxWidth: 380,
+        width: { xs: "100%", md: 380 },
         background: "#FCFCFC",
         boxShadow:
           "0px 0px 1px rgba(48, 49, 51, 0.05), 0px 8px 16px rgba(48, 49, 51, 0.1)",

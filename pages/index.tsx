@@ -47,7 +47,7 @@ const Home: NextPage = () => {
   useEffect(() => {
     scroll(scrollIdx);
 
-    const resizeHandler = () => scroll(scrollIdx);
+    const resizeHandler = () => setTimeout(() => scroll(scrollIdx));
     window.addEventListener("resize", resizeHandler);
 
     return () => window.removeEventListener("resize", resizeHandler);
@@ -95,8 +95,7 @@ const Home: NextPage = () => {
           <Container
             sx={{
               maxWidth: 1440,
-              p: "0px 118px",
-              pt: "56px",
+              p: { xs: "50px 20px", md: "58px 118px" },
             }}
           >
             <Title />
@@ -107,21 +106,21 @@ const Home: NextPage = () => {
               />
             </Box>
             <Box
+              data-aos="fade-down"
+              data-aos-delay="50"
               sx={{
                 mt: "56px",
                 display: "flex",
+                flexDirection: { xs: "column", md: "row" },
                 gap: "32px",
                 justifyContent: "center",
+                alignItems: "center",
               }}
             >
               {plans.map((plan, idx) => {
                 const isSelected = idx === formValues.plan;
                 return (
-                  <Box
-                    data-aos="fade-down"
-                    data-aos-delay={(idx * 50).toFixed(0)}
-                    key={plan.title}
-                  >
+                  <Box key={plan.title}>
                     <PlanItem
                       {...plan}
                       unit={paymentInterval}
@@ -136,8 +135,20 @@ const Home: NextPage = () => {
         </ParallaxLayer>
 
         {/* Second step */}
-        <ParallaxLayer offset={1} speed={2}>
-          <Container sx={{ maxWidth: 1440, p: "0px 118px", pt: "56px" }}>
+        <ParallaxLayer
+          offset={1}
+          speed={2}
+          style={{
+            overflowY: "auto",
+          }}
+        >
+          <Container
+            sx={{
+              maxWidth: 1440,
+              p: { xs: "50px 20px", md: "0px 118px" },
+              pt: "56px",
+            }}
+          >
             <Title />
             <Box sx={{ mt: "20px" }}>
               <Button onClick={() => setFormValue("plan", undefined)}>
@@ -147,19 +158,26 @@ const Home: NextPage = () => {
             <Box
               sx={{
                 mt: "36px",
+                mb: "36px",
                 display: "flex",
                 gap: "32px",
               }}
             >
               {typeof formValues.plan !== "undefined" && (
-                <PlanItem
-                  {...plans[formValues.plan as number]}
-                  unit={paymentInterval}
-                  onSelect={() => {
-                    setFormValue("plan", undefined);
+                <Box
+                  sx={{
+                    display: { xs: "none", md: "block" },
                   }}
-                  selected
-                />
+                >
+                  <PlanItem
+                    {...plans[formValues.plan as number]}
+                    unit={paymentInterval}
+                    onSelect={() => {
+                      setFormValue("plan", undefined);
+                    }}
+                    selected
+                  />
+                </Box>
               )}
               <form
                 style={{ flex: 1 }}
