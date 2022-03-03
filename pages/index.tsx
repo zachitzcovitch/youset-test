@@ -5,6 +5,7 @@ import { Parallax, ParallaxLayer, IParallax } from "@react-spring/parallax";
 
 import { plans } from "../mock-data";
 import {
+  PageContainer,
   Title,
   BillingToggle,
   PlanItem,
@@ -92,12 +93,7 @@ const Home: NextPage = () => {
             overflowY: "auto",
           }}
         >
-          <Container
-            sx={{
-              maxWidth: 1440,
-              p: { xs: "50px 20px", md: "58px 118px" },
-            }}
-          >
+          <PageContainer>
             <Title />
             <Box sx={{ mt: "57px" }}>
               <BillingToggle
@@ -131,7 +127,7 @@ const Home: NextPage = () => {
                 );
               })}
             </Box>
-          </Container>
+          </PageContainer>
         </ParallaxLayer>
 
         {/* Second step */}
@@ -142,13 +138,7 @@ const Home: NextPage = () => {
             overflowY: "auto",
           }}
         >
-          <Container
-            sx={{
-              maxWidth: 1440,
-              p: { xs: "50px 20px", md: "0px 118px" },
-              pt: "56px",
-            }}
-          >
+          <PageContainer>
             <Title />
             <Box sx={{ mt: "20px" }}>
               <Button onClick={() => setFormValue("plan", undefined)}>
@@ -283,7 +273,7 @@ const Home: NextPage = () => {
                 </Box>
               </form>
             </Box>
-          </Container>
+          </PageContainer>
         </ParallaxLayer>
       </Parallax>
       <Snackbar
